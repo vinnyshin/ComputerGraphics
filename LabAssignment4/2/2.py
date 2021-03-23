@@ -39,8 +39,8 @@ def render(th):
     glVertex2fv((M1 @ np.array([0.0, 0.0, 0.0]))[:-1])
     glVertex2fv((M1 @ np.array([0.5, 0.0, 0.0]))[:-1])
     
-    glVertex2fv((M1 @ np.array([0.0, 0.0, 0.0]))[:-1])
-    glVertex2fv((M1 @ np.array([0.0, 0.5, 0.0]))[:-1])
+    glVertex2fv((M2 @ np.array([0.0, 0.0, 0.0]))[:-1])
+    glVertex2fv((M2 @ np.array([0.0, 0.5, 0.0]))[:-1])
     glEnd()
 
 
