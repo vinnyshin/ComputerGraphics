@@ -159,35 +159,36 @@ def exp(rv):
 def log(R):
     trR = R[0][0] + R[1][1] + R[2][2]
 
-    theta = np.arccos((trR - 1) / 2)
+    w = None
+    theta = None
 
-    v1 = ((R[2][1] - R[1][2]) / (2 * np.sin(theta)))
-    v2 = ((R[0][2] - R[2][0]) / (2 * np.sin(theta)))
-    v3 = ((R[1][0] - R[0][1]) / (2 * np.sin(theta)))
-
-    w = np.array([v1, v2, v3])
-
-    # if trR == -1:
-    #     theta = np.pi
+    if trR == -1:
+        theta = np.pi
         
-    #     w1 = (1 / np.sqrt(2 * (1 + R[2][2]))) * np.array([R[0][2], R[1][2], 1 + R[2][2]])
-    #     w2 = (1 / np.sqrt(2 * (1 + R[1][1]))) * np.array([R[0][1], 1 + R[1][1], R[2][1]])
-    #     w3 = (1 / np.sqrt(2 * (1 + R[0][0]))) * np.array([1 + R[0][0], R[1][0], R[2][0]])
+        w1 = (1 / np.sqrt(2 * (1 + R[2][2]))) * np.array([R[0][2], R[1][2], 1 + R[2][2]])
+        w2 = (1 / np.sqrt(2 * (1 + R[1][1]))) * np.array([R[0][1], 1 + R[1][1], R[2][1]])
+        w3 = (1 / np.sqrt(2 * (1 + R[0][0]))) * np.array([1 + R[0][0], R[1][0], R[2][0]])
         
-    #     if l2norm(w1) != 0:
-    #         w = w1
-    #     elif l2norm(w2) != 0:
-    #         w = w2
-    #     elif l2norm(w3) != 0:
-    #         w = w3
-    #     else:
-    #         print("W1, W2, W3 none of them are nonzero")
-    # elif trR == 3:
-    #     w = 0
-    #     theta = 0
-    # else:
-    #     theta = np.arccos((trR - 1) / 2)
-    #     w = (1 / (2 * np.sin(theta))) * (R - R.T)
+        if l2norm(w1) != 0:
+            w = w1
+        elif l2norm(w2) != 0:
+            w = w2
+        elif l2norm(w3) != 0:
+            w = w3
+        else:
+            print("W1, W2, W3 none of them are nonzero")
+    elif trR == 3:
+        w = 0
+        theta = 0
+    else:
+        theta = np.arccos((trR - 1) / 2)
+
+        v1 = (R[2][1] - R[1][2]) / (2 * np.sin(theta))
+        v2 = (R[0][2] - R[2][0]) / (2 * np.sin(theta))
+        v3 = (R[1][0] - R[0][1]) / (2 * np.sin(theta))
+        
+        # w = (R - R.T) / (2 * np.sin(theta))
+        w = np.array([v1, v2, v3])
 
     return theta * w
 
