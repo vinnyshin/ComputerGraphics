@@ -134,6 +134,8 @@ def exp(rv):
     # 크기는 Theta, 방향은 V
     # Theta 단위는 라디안
     theta = np.sqrt(np.dot(rv, rv))
+    if theta == 0:
+        return np.identity(3)
     rv_unit = rv / theta
 
     x_unit = rv_unit[0]
