@@ -55,7 +55,7 @@ def render():
     
     glRotatef(36.264, 1, 0, 0)
     glRotatef(-45, 0, 1, 0)
-    glTranslatef(-3, -3, -3)
+    glTranslatef(-1, -1, -1)
     
     drawFrame()
     glColor3ub(255, 255, 255)

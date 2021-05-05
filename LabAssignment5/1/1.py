@@ -28,6 +28,8 @@ def render():
     glColor3ub(255, 0, 0)
     drawTriangle()
 
+    gluLookAt(0.3,0.3,0.3, 0,0,0, 0,1,0)
+
 def drawFrame():
     glBegin(GL_LINES)
     glColor3ub(255, 0, 0)
